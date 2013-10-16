@@ -1,0 +1,28 @@
+application: absolute-water-347
+version: 7
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: webapp2
+  version: latest
+
+handlers:
+- url: /admin/.*
+  script: admin.application
+  login: admin
+  
+- url: /favicon.ico
+  static_files: images/favicon.ico
+  upload: images/favicon.ico
+  
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt
+  
+- url: /images
+  static_dir: images
+
+- url: /.*
+  script: farm.application
